@@ -1,0 +1,5 @@
+2018-11-23 16:04:57,533 [art-exec-10] [INFO ] (o.a.s.j.m.s.Sha256MigrationJob:284) - artifactory.Sha256MigrationJob#c8fc2d4b-574b-4982-b9ed-b342f851caa2: all nodes reached minimal version '5.5.0-m001', continuing execution
+2018-11-23 16:09:56,636 [art-exec-3] [INFO ] (o.a.s.j.m.s.Sha256MigrationJob:284) - artifactory.Sha256MigrationJob#43493337-f692-4d92-8099-9f589f892770: all nodes reached minimal version '5.5.0-m001', continuing execution
+2018-11-24 21:00:03,282 [art-exec-3] [INFO ] (o.a.s.j.m.s.Sha256MigrationJob:284) - artifactory.Sha256MigrationJob#aaf99a0e-c8c9-4b35-bf08-c758291d53c5: all nodes reached minimal version '5.5.0-m001', continuing execution
+2018-12-02 08:57:09,523 [art-exec-3] [INFO ] (o.a.s.j.m.s.Sha256MigrationJob:284) - artifactory.Sha256MigrationJob#18605b82-c0f8-42ba-978c-63b4967a3561: all nodes reached minimal version '5.5.0-m001', continuing execution
+2018-12-11 11:50:17,798 [art-exec-3] [INFO ] (o.a.s.j.m.s.Sha256MigrationJob:284) - artifactory.Sha256MigrationJob#4c33fff2-f0f3-4bd5-974e-fa4aacac358d: all nodes reached minimal version '5.5.0-m001', continuing execution

@@ -1,0 +1,9 @@
+azure:
+  subscription_id: test
+  tenant_id: test
+
+azuredns:
+  sp_app_id: test
+  dns_token_name: dns-token
+  dns_zone_rg: test
+  dns_zone: test.web

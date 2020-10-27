@@ -1,0 +1,15 @@
+tag-ansible:
+  script:
+    - git checkout master
+    - git pull
+    - VERSION="$(./version.sh app_version)"
+    - sed -i "s| version.*| version:\ '$VERSION'|g" README.md
+    - cat README.md
+    - git config --global user.name "$GITLAB_USER_NAME"
+    - git config --global user.email "$GITLAB_USER_EMAIL"
+    - git tag -a $VERSION -m "Release $VERSION"
+    - 'git commit -am "message: Update role version [ci skip] "'
+    - git push https://$AUTH_USER_NAME:$AUTH_USER_TOKEN@gitlab.infra.computerstein.net/deployment/role-zabbix_agent.git
+    - git push https://$AUTH_USER_NAME:$AUTH_USER_TOKEN@gitlab.infra.computerstein.net/deployment/role-zabbix_agent.git --tags
+  only:
+    - master

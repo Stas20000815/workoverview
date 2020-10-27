@@ -1,0 +1,39 @@
+---
+- name: Remove yum conflicts
+  yum:
+     name: "{{ item }}"
+     state: absent
+  loop:
+    - docker
+    - docker-common
+    - docker-engine
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Install docker pre-prequirements for RedHat based distributions
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Add Docker GPG key.
+  rpm_key:
+    key: https://download.docker.com/linux/centos/gpg
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Add Docker repository.
+  get_url:
+    url: "https://download.docker.com/linux/centos/docker-ce.repo"
+    dest: '/etc/yum.repos.d/docker-ce.repo'
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  when: ansible_os_family == "RedHat"

@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  jenkins:
+    container_name: jenkins-official
+    image: jenkins/jenkins
+    ports:
+      - '80:8080'
+      - '443:8443'
+    volumes:  
+      - jenkins_jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+volumes:
+  jenkins_jenkins_data:
+    driver: local
+

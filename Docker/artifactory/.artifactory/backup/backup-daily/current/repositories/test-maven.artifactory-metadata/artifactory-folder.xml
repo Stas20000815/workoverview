@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<artifactory-folder>
+  <repoPath>
+    <repoKey>test-maven</repoKey>
+    <path></path>
+    <folder>true</folder>
+  </repoPath>
+  <name></name>
+  <created>1543087300659</created>
+  <lastModified>1543087300659</lastModified>
+  <additionalInfo>
+    <lastUpdated>1543087300659</lastUpdated>
+  </additionalInfo>
+</artifactory-folder>

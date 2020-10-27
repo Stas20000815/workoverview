@@ -1,0 +1,4 @@
+- src: 'ssh://git@gitlab.infra.computerstein.net:40022/deployment/role-docker_ce.git'
+  scm: 'git'
+  version: 'develop'
+  name: 'role-docker_ce'

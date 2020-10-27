@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<artifactory-file>
+  <repoPath>
+    <repoKey>UpvAJc6NM02cRYjWljnT</repoKey>
+    <path>zabbix-mail</path>
+    <folder>false</folder>
+  </repoPath>
+  <name>zabbix-mail</name>
+  <created>1542993398654</created>
+  <lastModified>1542993389000</lastModified>
+  <size>377</size>
+  <additionalInfo>
+    <createdBy>admin</createdBy>
+    <modifiedBy>admin</modifiedBy>
+    <lastUpdated>1542993389000</lastUpdated>
+    <checksumsInfo>
+      <checksums>
+        <checksum>
+          <type>sha1</type>
+          <original>NO_ORIG</original>
+          <actual>63048db156b1fd4900d103fa1796f4f9b2beb2dc</actual>
+        </checksum>
+        <checksum>
+          <type>md5</type>
+          <original>NO_ORIG</original>
+          <actual>1fb12c7a61385d2b103241b7593eb792</actual>
+        </checksum>
+        <checksum>
+          <type>sha256</type>
+          <original>NO_ORIG</original>
+          <actual>59b9676610705d5034c7a7b21bcc1db85a257af277eb5d36ab54e4fa37a80e0a</actual>
+        </checksum>
+      </checksums>
+    </checksumsInfo>
+  </additionalInfo>
+</artifactory-file>

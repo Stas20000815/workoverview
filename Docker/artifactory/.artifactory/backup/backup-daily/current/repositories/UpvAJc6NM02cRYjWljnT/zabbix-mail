@@ -1,0 +1,26 @@
+
+	{HOST.NAME}
+
+{TRIGGER.STATUS}: {TRIGGER.NAME}
+
+
+
+Trigger: {TRIGGER.NAME}
+Trigger status: {TRIGGER.STATUS}
+Trigger severity: {TRIGGER.SEVERITY}
+Trigger URL: {TRIGGER.URL}
+
+Item values:
+
+1. {ITEM.NAME1} ({HOST.NAME1}:{ITEM.KEY1}): {ITEM.VALUE1}
+
+Original event ID: {EVENT.ID}
+
+
+{TRIGGER.NSEVERITY}
+
+{TRIGGER.DESCRIPTION}
+
+{TRIGGER.ID}, several {HOST.*} 
+
+{TRIGGER.DESCRIPTION}

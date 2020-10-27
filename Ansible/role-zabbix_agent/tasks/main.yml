@@ -1,0 +1,20 @@
+---
+
+- name: Create a zabbix-agent
+  docker_container:
+    name: zabbix-agent
+    image: digiapulssi/docker-zabbix-agent
+    restart_policy: always
+    restart: yes
+    recreate: yes
+    published_ports: "{{ port | default(omit) }}"
+    volumes:
+      - "/proc:/host/proc:ro"
+      - "/sys:/host/sys:ro"
+      - "/dev:/host/dev:ro"
+      - "/etc:/host/etc:ro"
+      - "/var/run/docker.sock:/host/var/run/docker.sock"
+    env:
+      ZABBIX_SERVER: "{{ zabbix_server }}"
+      HOST: "{{ ansible_facts['nodename'] }}"
+

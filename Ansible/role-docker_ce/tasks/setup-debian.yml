@@ -1,0 +1,36 @@
+---
+- name: Remove apt conflicts
+  apt:
+    name: "{{ item }}"
+    state: absent
+  loop:
+    - docker
+    - docker-engine
+    - docker.io
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Install docker pre-requirements for Debian
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - software-properties-common
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Get upstream APT GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Configure upstream APT repository
+  apt_repository:
+    repo: "{{ docker_repository }}"
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"

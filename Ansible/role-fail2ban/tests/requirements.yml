@@ -1,0 +1,4 @@
+- src: 'ssh://git@gitlab.infra.computerstein.net:40022/deployment/role-fail2ban.git'
+  scm: 'git'
+  version: 'develop'
+  name: 'role-fail2ban'

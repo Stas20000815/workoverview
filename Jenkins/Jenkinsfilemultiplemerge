@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    environment {
+      GIT_CREADS = credentials('token-git')
+          }
+    stages {
+        stage ('test') {
+            steps {
+                script {
+                    sh 'rm -rf *'
+                    def repositories = ['gitlab.infra.computerstein.net/stanislav.polovnoy1/test-merge.git', 'gitlab.infra.computerstein.net/stanislav.polovnoy1/test-full-deploy.git']
+                    for (int i = 0; i < repositories.size(); ++i) {
+                    git branch: 'master', credentialsId: 'token-git', url: "https://${repositories[i]}"
+                    
+                     withCredentials([usernamePassword(credentialsId: 'token-git', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                         sh("git merge origin/develop")
+                        sh(" git push --set-upstream origin master")
+                    }
+                  
+                  
+                    }
+                    }
+                }
+            }
+        }
+    }
+

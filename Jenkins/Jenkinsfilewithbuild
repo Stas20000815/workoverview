@@ -1,0 +1,81 @@
+pipeline {
+    agent any
+    environment {
+      GIT_CREADS = credentials('gitlab-creds')
+          }
+    stages {
+      stage ('after build') {
+        environment {
+          VERSION = sh(returnStdout: true, script: 'bash version.sh app_version')
+        }
+        when {
+          not {
+            branch 'develop'
+          }
+        }
+        steps {
+          script {
+          withCredentials([usernamePassword(credentialsId: 'gitlab-creds', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+          sh 'echo ${VERSION} > docker-compose.yml'
+          sh("git commit -a -m 'Jenkins'")
+          sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@gitlab.infra.computerstein.net/spolo/app1.git master')
+          }
+          }
+        }
+      }
+      stage('Build image when develop') {
+          when {
+               branch 'develop'
+          }
+          environment {
+            VERSION = sh(returnStdout: true, script: 'echo snapshot')
+          }
+          steps {
+            sh 'docker build --build-arg VERSION=${VERSION} -t gitlab.infra.computerstein.net:4567/spolo/app1:${VERSION} .'
+            sh "printenv"
+          }
+        }
+        stage('Upload when develop') {
+          environment {
+            VERSION = sh(returnStdout: true, script: 'echo snapshot')
+          }
+          when {
+               branch 'develop'
+          }
+          steps {
+            sh "docker login -u $GIT_CREADS_USR -p  $GIT_CREADS_PSW gitlab.infra.computerstein.net:4567"
+            sh "docker push gitlab.infra.computerstein.net:4567/spolo/app1:${VERSION}"
+          }
+        }
+        stage('Build image when not develop') {
+          environment {
+            VERSION = sh(returnStdout: true, script: 'bash version.sh app_version')
+          }
+          when {
+            not {
+              branch 'develop'
+            }
+          }
+          steps {
+            sh 'docker build --build-arg VERSION=${VERSION} -t gitlab.infra.computerstein.net:4567/spolo/app1:${VERSION} .'
+            sh "printenv"
+          }
+        }
+
+        stage('Upload image when not develop') {
+          environment {
+            VERSION = sh(returnStdout: true, script: 'bash version.sh app_version')
+          }
+          when {
+            not {
+              branch 'develop'
+            }
+          }
+          steps {
+            sh "docker login -u $GIT_CREADS_USR -p  $GIT_CREADS_PSW gitlab.infra.computerstein.net:4567"
+            sh "docker push gitlab.infra.computerstein.net:4567/spolo/app1:${VERSION}"
+
+          }
+        }
+    }
+}

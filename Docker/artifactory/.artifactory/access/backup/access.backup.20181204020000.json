@@ -1,0 +1,177 @@
+{
+  "version" : "3",
+  "groups" : [ {
+    "name" : "readers",
+    "description" : "A group for read-only users",
+    "autoJoin" : true,
+    "realm" : "internal",
+    "realmAttributes" : null,
+    "created" : 1542989092398,
+    "modified" : 1542989092398,
+    "customData" : { }
+  } ],
+  "federation_events" : [ ],
+  "tokens" : [ {
+    "id" : "c55228d9-5a12-4ada-9d9d-b0ef917e3b1a",
+    "subject" : "jfrt@01cx0n20vb20a80ftpy2pe0wzj",
+    "owner" : "jfac@01cx0n0yvq4y3g022a414c0q3q",
+    "created" : 1542989090152,
+    "expiry" : 2489069090152,
+    "refreshToken" : null
+  } ],
+  "federation_servers" : [ ],
+  "permissions" : [ {
+    "name" : "jfac@01cx0n0yvq4y3g022a414c0q3q-admin",
+    "displayName" : "Access Admin (jfac@01cx0n0yvq4y3g022a414c0q3q)",
+    "resourceType" : "service",
+    "serviceId" : "jfac@01cx0n0yvq4y3g022a414c0q3q",
+    "created" : 1542989062049,
+    "modified" : 1542989062101,
+    "customData" : null,
+    "actions" : [ {
+      "action" : "a",
+      "principal" : "access-admin",
+      "principalType" : "USER",
+      "id" : "access-admin(USER):a"
+    } ]
+  }, {
+    "name" : "jfrt@01cx0n20vb20a80ftpy2pe0wzj:Anything",
+    "displayName" : "Anything",
+    "resourceType" : "repo",
+    "serviceId" : "jfrt@01cx0n20vb20a80ftpy2pe0wzj",
+    "created" : 1542989092512,
+    "modified" : 1542989092512,
+    "customData" : "{\"updatedBy\":\"_system_\",\"excludePattern\":\"\",\"includePattern\":\"**\",\"repoKeys\":[\"ANY\"]}",
+    "actions" : [ {
+      "action" : "r",
+      "principal" : "readers",
+      "principalType" : "GROUP",
+      "id" : "readers(GROUP):r"
+    }, {
+      "action" : "r",
+      "principal" : "anonymous",
+      "principalType" : "USER",
+      "id" : "anonymous(USER):r"
+    } ]
+  }, {
+    "name" : "jfrt@01cx0n20vb20a80ftpy2pe0wzj:Any Remote",
+    "displayName" : "Any Remote",
+    "resourceType" : "repo",
+    "serviceId" : "jfrt@01cx0n20vb20a80ftpy2pe0wzj",
+    "created" : 1542989092587,
+    "modified" : 1542989092587,
+    "customData" : "{\"updatedBy\":\"_system_\",\"excludePattern\":\"\",\"includePattern\":\"**\",\"repoKeys\":[\"ANY REMOTE\"]}",
+    "actions" : [ {
+      "action" : "w",
+      "principal" : "anonymous",
+      "principalType" : "USER",
+      "id" : "anonymous(USER):w"
+    }, {
+      "action" : "r",
+      "principal" : "anonymous",
+      "principalType" : "USER",
+      "id" : "anonymous(USER):r"
+    } ]
+  } ],
+  "servers" : [ {
+    "id" : "ea3964bb-22f3-4f71-bbf5-5f0fa7330fc6",
+    "created" : 1542989061686,
+    "modified" : 1543741013415,
+    "uniqueName" : "b919cad5-95d8-495e-be14-cf871eb2e322",
+    "version" : "3.2.3",
+    "privateKeyFingerprint" : "fb3ffbb26ee49761d1691c98410d396e4a9a5c6e9a7754f15e2e4d7258b4b4eb",
+    "privateKeyLastModified" : 1543741013414,
+    "lastHeartbeat" : 1543888799904,
+    "baseUrl" : "https://localhost:8340",
+    "grpcInfo" : "localhost:0"
+  } ],
+  "users" : [ {
+    "username" : "access-admin",
+    "firstName" : null,
+    "lastName" : null,
+    "email" : null,
+    "realm" : "internal",
+    "status" : "enabled",
+    "lastLoginTime" : 0,
+    "lastLoginIp" : null,
+    "password" : "bcrypt$$2a$08$2P46Q7lrAPCflItGgCiq.uc2YGR3X/BEw1Y0FCM04IljsafSLwX6e",
+    "allowedIps" : [ "127.0.0.1" ],
+    "created" : 1542989061898,
+    "modified" : 1542989061898,
+    "failedLoginAttempts" : 0,
+    "statusLastModified" : 0,
+    "passwordLastModified" : 1542989061853,
+    "customData" : { },
+    "groups" : [ ]
+  }, {
+    "username" : "admin",
+    "firstName" : null,
+    "lastName" : null,
+    "email" : null,
+    "realm" : "internal",
+    "status" : "enabled",
+    "lastLoginTime" : 1543253392175,
+    "lastLoginIp" : "127.0.0.1",
+    "password" : "bcrypt$$2a$08$B7smnI8mEzURwA4h6MgMKOFlWj9UsZH.BT6UiRqvt4jsYrmaK2E3C",
+    "allowedIps" : [ "*" ],
+    "created" : 1542989092290,
+    "modified" : 1543087350861,
+    "failedLoginAttempts" : 0,
+    "statusLastModified" : 1543087350858,
+    "passwordLastModified" : 1543087350858,
+    "customData" : {
+      "public_key" : "AU5fdveaf823kBiYE6oEsagdkoGpRMaLE82VfWngFk6U4ij8HYizPB2kgdF34wLSJKV3g5vUErwjEhhkk6Cajn8HPAUoVswTW7MvGSWL7SZhgUGNTX4cEqvpYQWvYb9exniboe1MkprbEnRMc8kDXXhDYaxb5A7",
+      "updatable_profile" : "true",
+      "private_key" : "ARwxS6q5GFAZ5bLyfauyodegbViM8iXA3rPq4nhgHby6R3rREpDS6FQu1Bsa9LDJ8ojw2nmVJgaTHNtbqD2B6rc2ncDQ2Y2WcQckmjus7jiZjWpsSm8nMiTScejnq7tfc5EXdrtRGHBtADBFgYctei96yecsjJUh3B8KPtddJK4HFVioYjJdW3kXxy5GpNpii3MELM6CsifksrS71MuW341CwCGzybwmi6dWpYoi8tGAQXKbMzWZ63fb68k7EP4B7Ym35UY42pfxLraPQ4ib9BY2srgQxjSdkj5RxTd9YCRWcJ8xAKh7czLY9Ci43KhsbVsM3ZZrsbb1ZZMbqnAvhKQLrjYwQTFiCLZHABrYXFuBMwNts4K5o6kyGiKXhDkrr6hEjNZV7EzNLRw4tidFxcoNofFXvc4svqneXrKyGxATebDKxKnq4y54yncYjXDqnynLyE1yRSoibFfTFmK3xqm4Ug83ELpMzmCwJTm9iTMqCYQdamrjH8J64y5p",
+      "artifactory_admin" : "true"
+    },
+    "groups" : [ ]
+  }, {
+    "username" : "anonymous",
+    "firstName" : null,
+    "lastName" : null,
+    "email" : null,
+    "realm" : "internal",
+    "status" : "enabled",
+    "lastLoginTime" : 1543782567110,
+    "lastLoginIp" : "127.0.0.1",
+    "password" : null,
+    "allowedIps" : [ "*" ],
+    "created" : 1542989092367,
+    "modified" : 1542989092367,
+    "failedLoginAttempts" : 0,
+    "statusLastModified" : 1542989092367,
+    "passwordLastModified" : 1542989092367,
+    "customData" : { },
+    "groups" : [ ]
+  }, {
+    "username" : "_internal",
+    "firstName" : null,
+    "lastName" : null,
+    "email" : null,
+    "realm" : "internal",
+    "status" : "enabled",
+    "lastLoginTime" : 1542989103150,
+    "lastLoginIp" : "127.0.0.1",
+    "password" : "bcrypt$$2a$08$VQbCRUNgC4p.z8V3Uq6tc.aJRq4rOHBnWd5cpI5KLC08VsM6.tjJ6",
+    "allowedIps" : [ "*" ],
+    "created" : 1542989094583,
+    "modified" : 1543741029077,
+    "failedLoginAttempts" : 0,
+    "statusLastModified" : 1543741029059,
+    "passwordLastModified" : 1543741029059,
+    "customData" : {
+      "apiKey_shash" : "GyziVh",
+      "apiKey" : "AM.y6vjP.AES128.9MwmyEiRGgbxDKkLV4QyZz1QC3AYgaQFTcExeygbGm1dnS5x6yDDrhZoK7yYGv6TzyzYR3PR37N1bdQpT5DZmyGJegsUeqetmdHgKujKuG3jr8qzkstHNXbhRrKiLKFNMbKBQn1"
+    },
+    "groups" : [ ]
+  } ],
+  "config" : { },
+  "encryption" : "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBcDJ0RGlJQXBoR3U5ZUZKcUdUNng0Nzgzd05hdVJqa1p4WVJyQ1QwUmppY1VzbFVPCnlXYUIvS083aE01NThlWWhLUExQdUtMRitwY3VDTlV5VHk1MkEzSjdBUTZoWS9nem1oREFNeXE0VlllQVlweDAKZDRGY0hKLytjUlFpYnZZRWJZNTh4ZHJJRlRnN1hURDgySjZIV3dFUTB4d3NIS2pnVXI1Smh3WDVacGJIdm1adQoxQnNrb093NUdQNHRlRnZDb1JVS093dzlXVjVrVFdsZGVZTFMzTmVuZlVxVGRLbUVKUU1yZ3BkVGV6N2ZmMm03Cmt0WEdQU016N2pPUWdGK3BqVldqbG4xbU1QaGhlM2V4d1JId0JjTlJmbXhRRXJ3T2hPNjE5RjM5YitSOWR4dnkKZG5Ob05mYm14bDV5UktFbDUvNmlvYW5ramRUclRZaE9wMzRkbFFJREFRQUJBb0lCQUdKdmNkeWZKa29Db3Z0TQowYThZS3JXeXAxQk5xVmdHbUwyR2R2eU9tSFRSUzV6eTMrZlF5cHJGbGlxbTBCSkhjYlhHMWhWRU4wMTRlQXVmCmRwNFJ2amVXcHZYZktVdERFdXdCNzAvbVRVMlVod3J6M0pLclQ0SlJHK1JXcDB4QWdDZitRQ1NBMTJXS2szVGUKcWJ1ZnNndnkyM2FVdU9iODhEQVdTOXNFeXpmaWQyVXkzTkJHenBWVDVqcE1tN25BaTBxREdNL1pSU1NaTDJpbQpqLzdiZC9LU3lLZEh3VDFoUTBMdnBCTForYlJ6Sml0dzVsMXB5UkIzWlZTOEVkRlc1YkdZUmF2MTNHQVNZTUFrCkIzT1FwWDYwTG8xZTdoSkVPaUhMVHNQUGJXZGJUVno1Y3Q1aTV1bmZOT1lvM2t4RXExTlhpR0ZMWG5RVndaTFkKOVlrVWtmMENnWUVBNzkvUjIrOGx3bjJ5ajhYZmd2cm9rT1l2dmZDSWF1VWJHdytObzczdmQ5Q0xzSDI5NkFoUQo4SEJsaktjZGZUQU5wV1p6eEd5eGxvUy8yT0NROXh4SkdVYk5oSldGNmRLUk1sNGs1Z1JMMWx1Kys2NDdIOWpDCkpZTExUMzl3SGdHaVpBYzRzanpmNVdmczdqTXBWTHpwSlZvRHRVV0Y4UERlQjR2Q1dmOTZQeE1DZ1lFQXNxeUIKWXdoVTliMGl0NW0vNU9EMDlUWnVrU3hBcGV3dmIwK1ZjZE5kQzRsV3VkNlowOGFoUklGVHk5RjlmTVkydm1PQwpRUkJ4TWsyUHkrTmtZbUtyRlJET0FRTkV2OUorOW41dHRrWkJ5cHZqVloraFpaU1M0bVhVZnhjMHN3b0taT2c3CmJUQzFYWEwxMURZODJpZnEzbUxlMVVCUmgxMXpIWEpJOTA2T3ZiY0NnWUVBZ0xSN0NhTDdnNnVtRDNhQVF1c1YKdGdtTVBFRy9NSHZWVzJPdy85WjlrckFYQTQrMFFiZVVsaTM0anN0c0N5dXBac0hlQTlxK1BxRGp2eDVmS2ZmSApVUVNvYVNkQlB3QjRYNm9iNmo4TDRleEFRUkp2THR0QzhKV0pPUktMdWMzdXIvVWYrcUtuRDVQL2tKOXE0Y2lxCjRCdTRPWjhnQ3ZOeWJtSVMyZTgyVEhrQ2dZQkZzZnlXZ0wyRFRjK3BCcFJQMTJBMTlwR1NsMHh3Ykh6a1VvcmMKNTdHM3VrN1dHZnF2SFIveTlPK1c1WlNwZ3pmL2RCbHUvOWJuNUZGZkdzZ2hpSk5ybUM2RFBwOG1wQmxhVlY2KwpaeEZxMHZ3T2ZrSWF1YVhDSWk2TmxLTzk0d0RDODhPYWlCRjI3a3p1Qm1vZVBzdmpDM1lZZ1FwTVh5dDBKUXhKClM1OXFhUUtCZ1FDZE5nb2FqSTN4YVhNTnM1eUpWWklGNVRiY083a3dJWVFiTzlqakRHdXQ0TTBrS213SkVtZ1oKNTdTbGw1UmIwVExhNk1UTEFjNXZSU3ZXY0Z2bWFJM29uOWpEOWM3TmxaOEMvTm12SXhZRlllOFdlRm0wd3BFWgpLL3lsMUFSZ1Fwa3NKbU1pMUxFOWYzL2laZ2o5a3VjTzNsNldHUGVOaUpJamlNTG41VVczK2c9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQokYWNjZXNzJC0tLS0tQkVHSU4gQ0VSVElGSUNBVEUtLS0tLQpNSUlESURDQ0FnaWdBd0lCQWdJUU1UV1A2cFUzU1JTWkNHMERQRGwycnpBTkJna3Foa2lHOXcwQkFRc0ZBREFxCk1TZ3dKZ1lEVlFRRERCOXFabUZqUURBeFkzZ3diakI1ZG5FMGVUTm5NREl5WVRReE5HTXdjVE54TUNBWERURTQKTVRFeU1qRTJNRFF5TUZvWUR6Y3dNREF3TVRBeE1EQXdNREl3V2pBcU1TZ3dKZ1lEVlFRRERCOXFabUZqUURBeApZM2d3YmpCNWRuRTBlVE5uTURJeVlUUXhOR013Y1ROeE1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBCk1JSUJDZ0tDQVFFQXAydERpSUFwaEd1OWVGSnFHVDZ4NDc4M3dOYXVSamtaeFlSckNUMFJqaWNVc2xVT3lXYUIKL0tPN2hNNTU4ZVloS1BMUHVLTEYrcGN1Q05VeVR5NTJBM0o3QVE2aFkvZ3ptaERBTXlxNFZZZUFZcHgwZDRGYwpISi8rY1JRaWJ2WUViWTU4eGRySUZUZzdYVEQ4Mko2SFd3RVEweHdzSEtqZ1VyNUpod1g1WnBiSHZtWnUxQnNrCm9PdzVHUDR0ZUZ2Q29SVUtPd3c5V1Y1a1RXbGRlWUxTM05lbmZVcVRkS21FSlFNcmdwZFRlejdmZjJtN2t0WEcKUFNNejdqT1FnRitwalZXamxuMW1NUGhoZTNleHdSSHdCY05SZm14UUVyd09oTzYxOUYzOWIrUjlkeHZ5ZG5ObwpOZmJteGw1eVJLRWw1LzZpb2Fua2pkVHJUWWhPcDM0ZGxRSURBUUFCbzBBd1BqQWxCZ05WSFJFRUhqQWNnaG93Ck1XTjRNRzR3ZVhaeE5Ia3paekF5TW1FME1UUmpNSEV6Y1RBVkJnUlZIUkVCQkEwd0M2QUpCZ1JWSFJFQkFnRUIKTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFCSHhWUjZVc2JMVTZYMFo0eUsyeUR4RzVHRHVsQkl2YnVaa0ZiZwpKZ2hsaUc2VFlxS1djeFJ3N3hzOURBMjRhMXVpTnFPT3JMYUpJQmE1VkpmbGFwL2k3a0JLNjN6K2ptNzlRUEZCCitGZzg2SjJ4aFc3b3VtWWM5UlByTCtaV1lzSnhTYmZhMTB2SDN2c2lpdGVnai9CZm95NGN2TTJrNXNpMm9MZEsKTkduOHp0Y09Ebjg0QnR3NmtScnZlSkZnNUU0VkdDcVlmYXQrWFBHN1haZmo4WElsTXo3bTBIZVkwOUs5aVU2Nwp5c2tMbXpERHNhVS83a2NNR28xUGhna3c4VTJ6SWxkRHRtbmQ2d241MU4wN3FFcUpDdVQ1VjYvb2lTYzdHTG9FCnBpdzNkNnczeTVNZmphNHVqcHY3Vkh2R1FoVG9INWdWdHRJY0dWdlN5T3dqZzZsMQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==",
+  "home" : {
+    "properties" : {
+      "access.server.name" : "b919cad5-95d8-495e-be14-cf871eb2e322",
+      ".access.properties.version" : "2"
+    }
+  }
+}

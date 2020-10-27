@@ -1,0 +1,3 @@
+---
+# defaults file for ansible_for_zabbix-agent
+zabbix_server: example.infra.computerstein.net

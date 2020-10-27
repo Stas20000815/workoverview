@@ -1,0 +1,74 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+BRIDGE_NET="192.168.53."
+MACHINE_RAM="2048"
+servers=[
+  {
+    :hostname => "app1",
+    :ip => BRIDGE_NET + "150",
+    :ip_int => "1",
+    :ram => MACHINE_RAM
+  },
+  {
+    :hostname => "app2",
+    :ip => BRIDGE_NET + "151",
+    :ip_int => "2",
+    :ram => MACHINE_RAM
+  },
+  {
+    :hostname => "app3",
+    :ip => BRIDGE_NET + "152",
+    :ip_int => "3",
+    :ram => MACHINE_RAM
+  },
+  {
+    :hostname => "app4",
+    :ip => BRIDGE_NET + "153",
+    :ip_int => "4",
+    :ram => MACHINE_RAM
+  },
+]
+
+Vagrant.configure(2) do |config|
+
+  config.ssh.forward_agent = true
+  servers.each do |machine|
+
+    config.vm.define machine[:hostname] do |node|
+      node.vm.box = "centos/7"
+      node.vm.hostname = machine[:hostname]
+      node.vm.network :private_network, ip: machine[:ip]
+      node.vm.provision "file", source: "vagrant_key", destination: "/home/vagrant/.ssh/id_rsa"
+
+      node.vm.provision :shell, privileged: true do |s|
+          ssh_pub_key = File.readlines("vagrant_key.pub").first.strip
+          s.inline = <<-SHELL
+            mkdir -p /root/.ssh
+            echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
+            echo #{ssh_pub_key} >> /home/vagrant/.ssh/id_rsa.pub
+            chmod 600 /home/vagrant/.ssh/id_rsa
+            chown vagrant:vagrant /home/vagrant/.ssh/id_rsa*
+            echo "192.168.53.150 app1" >> /etc/hosts
+            echo "192.168.53.151 app2" >> /etc/hosts
+            echo "192.168.53.152 app3" >> /etc/hosts
+            echo "192.168.53.153 app4" >> /etc/hosts
+            yum install -y epel-release
+            yum install -y python2-pip vim nano
+          SHELL
+      end
+#KUBESPRAY      node.vm.provision "file", source: "kubespray", destination: "/home/vagrant/kubespray"
+      node.vm.provider "virtualbox" do |vb|
+        vb.customize ["modifyvm", :id, "--memory", machine[:ram]]
+        vb.name = machine[:hostname]
+        if (!machine[:hdd_name].nil?)
+                    # Не создавать диск, если он уже существует
+                    unless File.exist?(machine[:hdd_name])
+                        vb.customize ["createhd", "--filename", machine[:hdd_name], "--size", machine[:hdd_size]]
+                    end
+                    # Подключить созданный диск к поточной VM
+                    vb.customize ["storageattach", :id, "--storagectl", "SATA", "--port", 1, "--device", 0, "--type", "hdd", "--medium", machine[:hdd_name]]
+        end
+      end
+    end
+  end
+end

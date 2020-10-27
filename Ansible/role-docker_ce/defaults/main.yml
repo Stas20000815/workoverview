@@ -1,0 +1,20 @@
+---
+docker_repository: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution.lower() }} {{ ansible_distribution_release }} stable"
+
+docker_users:
+  - "{{ ansible_facts.env.USER }}"
+
+docker_group: docker
+
+docker_compose_version: "1.23.2"
+
+######################################################
+### Change to true for enabling tcp://0.0.0.0:2376 ###
+### docker socket for remote connection            ###
+######################################################
+open_socket: false
+
+# Variables for apt proxy
+# http_proxy: "http_proxy="
+# https_proxy: "https_proxy="
+# ftp_proxy: "ftp_proxy="

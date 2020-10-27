@@ -1,0 +1,60 @@
+---
+- name: Add the apt proxy values to /etc/environment
+  lineinfile:
+    path: /etc/environment
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - { regexp: '^http_proxy=', line: "{{ http_proxy }}" }
+    - { regexp: '^https_proxy=', line: "{{ https_proxy }}" }
+    - { regexp: '^ftp_proxy=', line: "{{ ftp_proxy }}" }
+  when: http_proxy is defined and https_proxy and defined and ftp_proxy is defined
+  become: true
+
+- name: Include Debian pre-requirements
+  include: setup-debian.yml
+  when: ansible_os_family == "Debian"
+
+- name: Include Redhat pre-requirements
+  include: setup-redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Install Docker
+  package:
+    name: "docker-ce"
+    state: present
+  become: true
+
+- name: Install Docker Compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64"
+    dest: "/usr/local/bin/docker-compose"
+    mode: 0755
+  become: true
+
+- name: Create directory for docker socket configuration
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: 0755
+  become: true
+  when: open_socket == "true"
+
+- name: Open tcp socket with docker_api
+  template:
+      src: docker_startup.conf
+      dest: /etc/systemd/system/docker.service.d/override.conf
+  become: true
+  when: open_socket == "true"
+  notify:
+    - restart_docker
+
+- name: Add Users to the docker group
+  user:
+    name: "{{ item }}"
+    groups: "{{ docker_group }}"
+    append: yes
+  become: true
+  loop: "{{ docker_users }}"
+  notify:
+    - restart_docker
